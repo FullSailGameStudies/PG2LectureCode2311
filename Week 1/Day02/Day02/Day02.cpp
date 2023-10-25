@@ -4,8 +4,9 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include "Sample.h"
 
-bool postFix(std::string& hero)
+bool postFix(std::string hero)
 {
     srand((unsigned int)time(NULL));
     int postFixNumber = rand() % 1000;
@@ -36,6 +37,36 @@ void printInfo(const std::vector<int>& scores)
     std::cout << "size: " << scores.size() << "\tcapacity: " << scores.capacity() << "\n";
 }
 
+void FillWithGrades(std::vector<float>& course)
+{
+    int numStudents = rand() % 20;
+    for (size_t i = 0; i < numStudents; i++)
+    {
+        course.push_back(rand() % 101);
+    }
+}
+
+void PrintGrades(const std::vector<float>& course)
+{
+    //course.clear();
+    for (auto& grade : course)
+    {
+        std::cout << grade << "\n";
+    }
+}
+
+void CalcStats(const std::vector<float>& course, float& min, float& max)
+{
+    min = max = course[0];
+    for (auto& grade : course)
+    {
+        if (grade < min) min = grade;
+        if (grade > max) max = grade;
+        //OR...
+        //min = std::min<float>(min, grade);
+        //max = std::max<float>(max, grade);
+    }
+}
 int main()
 {
     /*
@@ -62,6 +93,8 @@ int main()
 
     */
     std::vector<float> grades;
+    FillWithGrades(grades);
+    PrintGrades(grades);
 
 
 
@@ -79,17 +112,24 @@ int main()
     float avg = average(highScores);
 
 
+    Sample sample;
+    sample.name = "Arthur";
+    sample.PrintMyName();
+
 
     /*
         CHALLENGE 2:
 
             Write a method to calculate the stats on a vector of grades
             1) create a method to calculate the min, max. 
-                pass the grades vector as a const reference. Use ref parameters for min and max.
+                pass the grades vector as a CONST reference. 
+                Use ref parameters for min and max.
             2) call the method in main and print out the min, max.
 
     */
-
+    float minGrade, maxGrade;
+    CalcStats(grades, minGrade, maxGrade);
+    std::cout << "Min: " << minGrade << "\tMax: " << maxGrade << "\n";
 
 
 
