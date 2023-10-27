@@ -39,7 +39,7 @@ void printInfo(const std::vector<int>& scores)
 
 void FillWithGrades(std::vector<float>& course)
 {
-    int numStudents = rand() % 20;
+    int numStudents = 10;// +rand() % 20;
     for (size_t i = 0; i < numStudents; i++)
     {
         course.push_back(rand() % 101);
@@ -107,8 +107,13 @@ int main()
         This is the way you pass by reference and prevent the method from changing the variable.
     */
     std::vector<int> highScores;
+    highScores.reserve(10);
+    printInfo(highScores);
     for (int i = 0; i < 10; ++i)
+    {
         highScores.push_back(rand());
+        printInfo(highScores);
+    }
     float avg = average(highScores);
 
 
@@ -179,7 +184,19 @@ int main()
             Remove all the failing grades (grades < 59.5).
             Print the grades.
     */
-
+    std::cout << "--------------REMOVING----------\n";
+    PrintGrades(grades);
+    for (size_t i = 0; i < grades.size(); )
+    {
+        if (grades[i] < 59.5)
+        {
+            grades.erase(grades.begin() + i);
+        }
+        else
+            i++;
+    }
+    std::cout << "--------------FINISHED REMOVING----------\n";
+    PrintGrades(grades);
 
 
 
@@ -195,7 +212,40 @@ int main()
         reserve(n): presizes the internal array
     */
     std::vector<int> scores;
-    scores.reserve(10); //makes the internal array to hold 10 items.
+    //scores.reserve(110);
+    //size() - how many items are in the vector
+    //capacity() - how big the internal array is
+    printInfo(scores);//size: 0   capacity: ? 0
+    scores.push_back(rand() % 20000);
+    printInfo(scores);//size: 1   capacity: 1
+    scores.push_back(rand() % 20000);
+    printInfo(scores);//size: 2   capacity: 4? 3?
+    scores.push_back(rand() % 20000);
+    scores.push_back(rand() % 20000);
+    scores.push_back(rand() % 20000);
+    scores.push_back(rand() % 20000);
+    printInfo(scores);//size: 6   capacity: 6?? 7?
+    scores.push_back(rand() % 20000);
+    scores.push_back(rand() % 20000);
+    scores.push_back(rand() % 20000);
+    scores.push_back(rand() % 20000);
+    scores.push_back(rand() % 20000);
+    scores.push_back(rand() % 20000);
+    printInfo(scores);//size: 9   capacity: 9
+    scores.push_back(rand() % 20000);
+    //scores.push_back(rand() % 20000);
+    //scores.push_back(rand() % 20000);
+    printInfo(scores);//size: 10   capacity: 13????
+    scores.erase(scores.begin());
+    printInfo(scores);//size: 9   capacity: 13????
+    for (size_t i = 0; i < 100; i++)
+    {
+        scores.push_back(rand() % 20000);
+        printInfo(scores);//size: 109   capacity: ????
+    }
+    printInfo(scores);//size: 109   capacity: ????
+
+    //scores.reserve(10); //makes the internal array to hold 10 items.
 
     printInfo(scores);
 }

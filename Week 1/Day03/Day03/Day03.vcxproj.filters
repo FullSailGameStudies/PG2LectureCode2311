@@ -18,5 +18,13 @@
     <ClCompile Include="Day03.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ThemeSongs.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ThemeSongs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
