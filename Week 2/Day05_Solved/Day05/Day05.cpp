@@ -112,6 +112,7 @@ int main()
     grades["Arthur"] = rand() % 101;
 
 
+    std::vector<std::string> pg2_2311{ "Ryan", "Bryan", "Aidan", "Anthony", "James", "Ana", "Niko", "Samuel", "Meikel", "Matthew", "Greyson" };
 
 
 

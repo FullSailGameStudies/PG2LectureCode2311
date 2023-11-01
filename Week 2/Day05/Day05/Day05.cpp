@@ -5,6 +5,7 @@
 #include <string>
 #include <map>
 #include <vector>
+#include <iomanip>
 
 enum class Weapon
 {
@@ -25,6 +26,16 @@ int Linear(std::vector<int> searchVector, int searchTerm)
     }
 
     return index;
+}
+
+void PrintGrades(const std::map<std::string, double>& course)
+{
+    std::cout << "\n*-*-*-*-PG2 2311*-*-*-*-\n";
+    for (auto& [student, grade] : course)
+    {
+        std::cout << std::setw(10) << std::left << student << std::setw(7) << std::right << grade << "\n";
+    }
+    std::cout << "\n\n";
 }
 
 
@@ -51,7 +62,7 @@ int main()
 
     */
     std::vector<int> numbers = { 0,1,2,3,4,5,6 };
-    int searchNumber = 6;
+    int searchNumber = 15;
     int foundIndex = Linear(numbers, searchNumber);
     if (foundIndex >= 0)
         std::cout << searchNumber << " was found at index " << foundIndex << "\n";
@@ -96,6 +107,21 @@ int main()
     dorasBackpack[Weapon::Axe] = 7;//simply overwrites the value if the key is already in the map
 
 
+    //type of key: string
+    //type of value: float
+    std::map<std::string, float> menu;
+    //[key] = value
+    menu["Parmesan Chicken"] = 24.99F;
+    menu["Spaghetti"] = 14.99F;
+    menu["Spaghetti"] = 16.99F;//overwrite
+
+    std::pair<std::string, float> item("Garlic Bread", 8.99F);
+    auto wasInserted = menu.insert(item);
+    std::pair<std::string, float> item2("Garlic Bread", 12.99F);
+    wasInserted = menu.insert(item2);//will NOT overwrite
+    if (wasInserted.second == false)
+        std::cout << "Are you sure you want to overwrite?\n";
+
     /*
         CHALLENGE 2:
 
@@ -103,7 +129,14 @@ int main()
             Add students and grades to your map.
 
     */
+    std::vector<std::string> pg2_2311{ "Ryan", "Bryan", "Aidan", "Anthony", "James", "Ana", "Niko", "Samuel", "Meikel", "Matthew", "Greyson" };
 
+    srand(time(NULL));
+    std::map<std::string, double> grades;
+    for (auto& student : pg2_2311)
+    {
+        grades[student] = (rand() % 10001) / 100.0;
+    }
 
 
 
@@ -141,6 +174,19 @@ int main()
         std::cout << val << "\n";
     }
 
+    std::cout << "*-*-*-*-Chez Bryan*-*-*-*-\n";
+    for (auto it = menu.begin(); it != menu.end(); it++)
+    {
+        std::cout << std::setw(20) << it->first << std::setw(7) << it->second << "\n";
+    }
+
+    std::cout << "\n*-*-*-*-Chez Bryan*-*-*-*-\n";
+    for (auto& [menuItem,menuPrice] : menu)
+    {
+        std::cout << std::setw(20) << std::left << menuItem << std::setw(7) << menuPrice << "\n";
+    }
+    std::cout << "\n\n";
+
 
     /*
         CHALLENGE 4:
@@ -148,6 +194,7 @@ int main()
             Loop over your grades map and print each student name and grade.
 
     */
+    PrintGrades(grades);
 
 
 
