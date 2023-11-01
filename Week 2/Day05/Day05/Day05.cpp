@@ -221,8 +221,16 @@ int main()
         std::cout << "Dora found " << foundIter->second << " Maces\n";
     }
 
-
-
+    std::string itemToFind = "Garlic Bread";
+    auto foundMenuItem = menu.find(itemToFind);
+    if (foundMenuItem == menu.end())
+    {
+        std::cout << itemToFind << " was not found.\n";
+    }
+    else
+    {
+        std::cout << itemToFind << " costs " << foundMenuItem->second << "\n";
+    }
     /*
         CHALLENGE 5:
 
@@ -231,6 +239,12 @@ int main()
             else print out a message that the student was not found
 
     */
+    std::string studentToFind = "Bryan";
+    auto foundStudent = grades.find(studentToFind);
+    if (foundStudent != grades.end())
+        std::cout << foundStudent->first << " has a grade of " << foundStudent->second << "\n";
+    else
+        std::cout << studentToFind << " is not in the course.\n";
 
 
 
@@ -248,6 +262,19 @@ int main()
     */
     dorasBackpack[Weapon::Axe] = 1;//updates the count for the axe
 
+    if (foundMenuItem != menu.end())
+    {
+        float garlic = foundMenuItem->second;
+
+        //update the value for the key
+        menu[foundMenuItem->first] = garlic + 4;
+        //OR
+        //foundMenuItem->second = garlic + 4;
+
+
+        std::cout << foundMenuItem->first << " used to costs " << garlic;
+        std::cout << ". Now it costs " << menu[foundMenuItem->first] << "!! Thanks Putin.\n";
+    }
 
 
     /*
@@ -256,4 +283,12 @@ int main()
             Pick any student and curve the grade (add 5) that is stored in the grades map
 
     */
+
+
+    if (foundStudent != grades.end())
+    {
+        double oldGrade = foundStudent->second;
+        grades[(*foundStudent).first] = std::min<double>(100, oldGrade + 5);
+        std::cout << foundStudent->first << " had a grade of " << oldGrade << ". Now the grade is " << foundStudent->second << ".\n";
+    }
 }
