@@ -11,6 +11,22 @@ enum class Weapon
     Sword, Axe, Spear, Mace
 };
 
+int Linear(std::vector<int> searchVector, int searchTerm)
+{
+    int index = -1;
+
+    for (size_t i = 0; i < searchVector.size(); i++)
+    {
+        if (searchTerm == searchVector[i])
+        {
+            index = i;
+            break;
+        }
+    }
+
+    return index;
+}
+
 
 int main()
 {
@@ -35,7 +51,12 @@ int main()
 
     */
     std::vector<int> numbers = { 0,1,2,3,4,5,6 };
-    int searchNumber = 15;
+    int searchNumber = 6;
+    int foundIndex = Linear(numbers, searchNumber);
+    if (foundIndex >= 0)
+        std::cout << searchNumber << " was found at index " << foundIndex << "\n";
+    else
+        std::cout << searchNumber << " was NOT found!\n";
 
 
 
@@ -57,7 +78,7 @@ int main()
 
         [  Adding items to a map  ]
 
-        There are 2 ways to add items to a Dictionaruy:
+        There are 2 ways to add items to a Dictionary:
         1) using the insert method.
         3) using [key] = value
     */
