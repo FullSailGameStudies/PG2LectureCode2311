@@ -2,6 +2,7 @@
 //
 
 #include <iostream>
+#include "Pickaxe.h"
 
 
 /*              CLASSESS
@@ -45,19 +46,8 @@
 int main()
 {
     /*
-        Lecture code: add a Car class
     
     */
-
-    /*
-        CHALLENGE:
-
-            Create a Person class.
-            Right-Click the project and select "Add > Class..."
-
-    */
-
-
 
 
     /*
@@ -69,13 +59,18 @@ int main()
 
         int mModelYear;
 
-        Lecture code: add year, make, model fields to the car class
+        Lecture code: add a Pickaxe class
+        Lecture code: add material, durability fields
 
     */
 
     /*
         CHALLENGE:
-            Add an age field and a name field to the Person class
+
+			1. Create a Player class.
+			Right-Click the project and select "Add > Class..."
+
+			2. Add these Fields: gamertag, health, experience, armorLevel
     */
 
 
@@ -96,13 +91,16 @@ int main()
             std::cout << mName;
         }
 
-        Lecture code: add a vehicleInformation method
+        Lecture code: add MineSomething and UpdateDurability methods
     */
+    Pickaxe fortune500;
+    fortune500.MineSomething(5, 5, 5);
 
 
     /*
         CHALLENGE:
-            write an ItsMyBirthday method. increment age and print out a happy message.
+            add a PickupItem method w/ a string parameter
+            add the item to vector inventory
     */
 
 
@@ -127,7 +125,7 @@ int main()
             mModelYear = year;
         }
 
-        Lecture code: add getters/setters for year, make, model fields to the car class
+        Lecture code: add getters/setters 
     */
 
 
@@ -158,14 +156,14 @@ int main()
            mMake = make;
         }
 
-        Lecture code: add 2 ctors (default and non-default) to the car class
+        Lecture code: add 2 ctors (default and non-default) 
     */
 
 
     /*
 
         CHALLENGE:
-            Add a constructor to the Person class to initialize the age and name fields
+            Add a constructor to the Player class to initialize the fields
     */
 
 
@@ -178,7 +176,7 @@ int main()
 
         In C++, structs are just like classes EXCEPT members are public by default.
 
-        Lecture code: add struct for ManufacturerDetails (Name, YearEstablished)
+        Lecture code: add struct for color (r,g,b,a)
     */
 
 }
