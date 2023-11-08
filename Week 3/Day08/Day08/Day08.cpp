@@ -13,12 +13,12 @@
 int main()
 {
 	/*
-        ╔═══════════════╗
-        ║  Inheritance  ║
-        ╚═══════════════╝
+		╔═══════════════╗
+		║  Inheritance  ║
+		╚═══════════════╝
 
 								╔═════════╗     ╔══════════╗
-				         class  ║SomeClass║  :  ║OtherClass║
+						 class  ║SomeClass║  :  ║OtherClass║
 								╚═════════╝     ╚══════════╝
 									 │                │
 									 └──┐             └──┐
@@ -31,7 +31,7 @@ int main()
 				public inheritance:
 				protected inheritance:
 				private inheritance: (default if not specified)
-	
+
 
 
 				CONSTRUCTORS: the derived constructor must call a base constructor
@@ -39,25 +39,25 @@ int main()
 
 
 			Lecture Code: add a FlyingCar class that derives from Car
-             
-    */
+
+	*/
 
 
 
 	/*
-        ╔*************╗
-        ║  CHALLENGE  ║
-        ╚*************╝
+		╔*************╗
+		║  CHALLENGE  ║
+		╚*************╝
 
-            add a new class, Pistol, that derives from Weapon.
+			add a new class, Pistol, that derives from Weapon.
 
 
-            Pistol should have fields with getters/setters for rounds and magCapacity.
-            Add a constructor that calls the base constructor
-	
+			Pistol should have fields with getters/setters for rounds and magCapacity.
+			Add a constructor that calls the base constructor
+
 	*/
 	FlyingCar heli(1000, 2024, "Tesla", "X-Car");
-	Pistol bang;
+	Pistol bang(10, 15, 250, 100);
 
 
 
@@ -65,9 +65,9 @@ int main()
 
 
 	/*
-        ╔═════════════════════════════╗
-        ║  COMPILE-TIME Polymorphism  ║
-        ╚═════════════════════════════╝
+		╔═════════════════════════════╗
+		║  COMPILE-TIME Polymorphism  ║
+		╚═════════════════════════════╝
 
 		Method Overloading:
 			- changing the number of parameters
@@ -80,9 +80,9 @@ int main()
 
 
 	/*
-        ╔*************╗
-        ║  CHALLENGE  ║
-        ╚*************╝
+		╔*************╗
+		║  CHALLENGE  ║
+		╚*************╝
 
 			Add an OVERLOAD of the calcDamage method in the Weapon class.
 			The overload should take an int parameter called modifier
@@ -95,9 +95,9 @@ int main()
 
 
 	/*
-        ╔═════════════════════════════╗
-        ║  COMPILE-TIME Polymorphism  ║
-        ╚═════════════════════════════╝
+		╔═════════════════════════════╗
+		║  COMPILE-TIME Polymorphism  ║
+		╚═════════════════════════════╝
 
 		Operator Overloading
 
@@ -108,9 +108,9 @@ int main()
 
 
 	/*
-        ╔*************╗
-        ║  CHALLENGE  ║
-        ╚*************╝
+		╔*************╗
+		║  CHALLENGE  ║
+		╚*************╝
 
 		overload the + in the Pistol class to add 2 pistols
 			- it sets the magCapacity to the max of the 2 pistols
@@ -123,9 +123,9 @@ int main()
 
 
 	/*
-        ╔════════════════════════╗
-        ║  RUNTIME Polymorphism  ║
-        ╚════════════════════════╝
+		╔════════════════════════╗
+		║  RUNTIME Polymorphism  ║
+		╚════════════════════════╝
 
 		╔═════════════╗
 		║ OVERRIDING  ║ - changing the behavior of a base method
@@ -152,9 +152,9 @@ int main()
 
 
 	/*
-        ╔*************╗
-        ║  CHALLENGE  ║
-        ╚*************╝
+		╔*************╗
+		║  CHALLENGE  ║
+		╚*************╝
 
 			Override Weapon's showMe method in the Pistol class.
 			In Pistol's version, call the base version then print out the rounds and magCapacity
@@ -174,19 +174,19 @@ int main()
 		Using unique pointers w/ overridden methods
 
 
-        ╔═══════════╗ 
-        ║ UPCASTING ║ - casting a derived type variable to a base type variable
-        ╚═══════════╝ 
+		╔═══════════╗
+		║ UPCASTING ║ - casting a derived type variable to a base type variable
+		╚═══════════╝
 
-        This is ALWAYS safe.
+		This is ALWAYS safe.
 
-	
+
 		To maintain the original object, we need a pointer though. If not, then we're just calling the copy constructor of the base class and lose all the info of the derived.
 
 		Unique pointers owns and manages an object through a pointer.
 		std::unique_ptr<derived> pDerived = std::make_unique<derived>("Gotham", 5);
 
-		
+
 		You can upcast by using the base type in the unique_ptr.
 		std::unique_ptr<base> pBase = std::make_unique<derived>("Gotham", 5);
 		  OR
@@ -194,7 +194,7 @@ int main()
 
 
 
-		Lecture Code: 
+		Lecture Code:
 			use make_unique and unique_ptr to create a derived instance
 			use std::move to upcast it to a base
 	*/
@@ -207,9 +207,9 @@ int main()
 
 
 	/*
-        ╔*************╗
-        ║  CHALLENGE  ║
-        ╚*************╝
+		╔*************╗
+		║  CHALLENGE  ║
+		╚*************╝
 
 		Create a vector that holds unique pointers of Weapon.
 		Create instances of Weapon and Pistol using make_unique.

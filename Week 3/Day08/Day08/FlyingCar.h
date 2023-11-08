@@ -1,5 +1,6 @@
 #pragma once
 #include "Car.h"
+#include <iostream>
 
 class FlyingCar : public Car
 {
@@ -10,7 +11,7 @@ public:
 		Car(year,make,model),  //call the base class ctor
 		maxAltitude_(maxAltitude)
 	{
-
+		std::cout << mMake << mModel << mModelYear;
 	}
 };
 
