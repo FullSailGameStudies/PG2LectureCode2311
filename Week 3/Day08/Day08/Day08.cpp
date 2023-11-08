@@ -77,6 +77,13 @@ int main()
 
 	*/
 
+	Calculator t800;
+	int i1 = 10, i2 = 5;
+	int sum = t800.add(i1, i2);
+
+	double big1 = 100, big2 = 400;
+	double sumD = t800.add(big1, big2);
+
 
 
 	/*
@@ -104,6 +111,9 @@ int main()
 		Lecture Code: overload the + operator in Account
 
 	*/
+
+	Account saving, moneyMarket;
+	Account newAccount = saving + moneyMarket;
 
 
 
@@ -162,6 +172,7 @@ int main()
 
 
 	*/
+	bang.showMe();
 
 
 
@@ -198,6 +209,7 @@ int main()
 			use make_unique and unique_ptr to create a derived instance
 			use std::move to upcast it to a base
 	*/
+	std::cout << "\n\n";
 	derived der1("Gotham", 1);
 	base base1 = der1; //calls the assignment operator of base therefore you lose all the derived parts. base1 is JUST a base object.
 	der1.print();

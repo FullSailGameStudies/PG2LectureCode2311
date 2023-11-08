@@ -14,10 +14,10 @@
 class Calculator
 {
 public:
-	int add(int n1, int n2);
-	int add(int n1, int n2, int n3);
-	float add(float f1, float f2);
-	double add(double d1, double d2);
+	int add(int n1, int n2) { return n1 + n2; }
+	int add(int n1, int n2, int n3) { return n1 + n2 + n3; }
+	float add(float f1, float f2) { return f1 + f2; }
+	double add(double d1, double d2) { return d1 + d2; }
 };
 
 
@@ -34,6 +34,12 @@ private:
 	double mBalance;
 
 public:
+	Account operator+(Account const& otherAccount)
+	{
+		Account acct;
+		acct.mBalance = mBalance + otherAccount.mBalance;
+		return acct;
+	}
 };
 
 
@@ -55,7 +61,7 @@ public:
 	{
 
 	}
-	void print()
+	virtual void print()
 	{
 		std::cout << "Hello base " << mNum << "\n";
 	}
@@ -68,4 +74,10 @@ private:
 public:
 	derived(std::string str, int num) : base(num), mStr(str)
 	{ }
+
+	void print() override
+	{
+		base::print();//to extend, make sure to call the base version
+		std::cout << "Hello derived " << mStr << "\n";
+	}
 };

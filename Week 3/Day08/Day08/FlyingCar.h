@@ -11,6 +11,8 @@ public:
 		Car(year,make,model),  //call the base class ctor
 		maxAltitude_(maxAltitude)
 	{
+		//mMake = make;
+		//mModel = model;//DON'T DO what the base ctor does
 		std::cout << mMake << mModel << mModelYear;
 	}
 };
