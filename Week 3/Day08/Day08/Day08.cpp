@@ -8,6 +8,7 @@
 #include "Car.h"
 #include "Pistol.h"
 #include "FlyingCar.h"
+#include <vector>
 
 
 int main()
@@ -211,12 +212,23 @@ int main()
 	*/
 	std::cout << "\n\n";
 	derived der1("Gotham", 1);
+
+	{
+		std::unique_ptr<derived> pDerived = std::make_unique<derived>("Gotham", 5);
+		pDerived->print();
+
+		std::vector<std::unique_ptr<Car>> garage;
+		garage.push_back(std::make_unique<Car>(2055, "WayneTech", "Batmobile"));
+		garage.push_back(std::make_unique<FlyingCar>(50000, 2055, "WayneTech", "Batwing"));//upcast
+
+
+	}//the memory for pDerived is "cleaned" up (released)
+
+	//this does NOT upcast.
 	base base1 = der1; //calls the assignment operator of base therefore you lose all the derived parts. base1 is JUST a base object.
 	der1.print();
 	std::cout << "\n";
 	base1.print();
-
-
 
 	/*
 		╔*************╗
@@ -230,5 +242,15 @@ int main()
 		Loop over the vector and call showMe on each weapon.
 
 	*/
+	std::vector<std::unique_ptr<Weapon>> chest;
+	chest.push_back(std::make_unique<Weapon>(100,10));
+	chest.push_back(std::make_unique<Pistol>(10, 20, 240, 50));
+	chest.push_back(std::make_unique<Weapon>(100,10));
+
+	std::cout << "\n\n_*_* Inventory _*_*\n";
+	for (auto& wpn : chest)
+	{
+		wpn->showMe();
+	}
 }
 

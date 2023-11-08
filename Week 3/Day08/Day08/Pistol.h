@@ -10,6 +10,6 @@ private:
 public:
 	Pistol(int rounds, int magCap, int range, int damage);
 
-	void showMe();
+	void showMe() override;
 };
 
