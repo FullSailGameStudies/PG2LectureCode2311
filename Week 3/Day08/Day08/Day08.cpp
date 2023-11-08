@@ -6,6 +6,8 @@
 #include "Inheritance.h"
 #include "Polymorphism.h"
 #include "Car.h"
+#include "Pistol.h"
+#include "FlyingCar.h"
 
 
 int main()
@@ -48,10 +50,14 @@ int main()
         ╚*************╝
 
             add a new class, Pistol, that derives from Weapon.
+
+
             Pistol should have fields with getters/setters for rounds and magCapacity.
             Add a constructor that calls the base constructor
 	
 	*/
+	FlyingCar heli(1000, 2024, "Tesla", "X-Car");
+	Pistol bang;
 
 
 

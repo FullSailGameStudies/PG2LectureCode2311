@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "Pickaxe.h"
+#include "color.h"
 
 
 /*              CLASSESS
@@ -93,8 +94,10 @@ int main()
 
         Lecture code: add MineSomething and UpdateDurability methods
     */
-    Pickaxe fortune500;
+    Pickaxe fortune500(Material::Netherite);//we are calling the DEFAULT ctor here
     fortune500.MineSomething(5, 5, 5);
+
+    //Pickaxe* picky = new Pickaxe(Material::Gold);
 
 
     /*
@@ -132,8 +135,7 @@ int main()
     /*
 
         CHALLENGE:
-            Add Age getter/setter to provide access to the mAge field
-            Add a Name getter/setter for the mName field
+            Add a getter/setter for the Player's experience_ field
     */
 
 
@@ -178,5 +180,8 @@ int main()
 
         Lecture code: add struct for color (r,g,b,a)
     */
+
+    COLOR woolColor;
+    woolColor.red = woolColor.green = woolColor.blue = 255;
 
 }

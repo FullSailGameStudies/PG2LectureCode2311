@@ -132,6 +132,7 @@
     <ClCompile Include="Player.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="color.h" />
     <ClInclude Include="enums.h" />
     <ClInclude Include="Pickaxe.h" />
     <ClInclude Include="Player.h" />
