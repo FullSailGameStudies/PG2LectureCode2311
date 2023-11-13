@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <fstream>
 class Hero
 {
 public:
@@ -13,6 +14,8 @@ public:
 	
 	int GetAge() const { return age_; }
 	void SetAge(int age) { age_ = age; }
+
+	void Serialize(std::ostream& outputFile, char delimiter);
 
 private:
 	std::string name_, secret_;

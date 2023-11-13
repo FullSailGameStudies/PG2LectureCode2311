@@ -158,4 +158,24 @@ int main()
         std::cout << "Hello citizen! I am " << hero.GetName() << " (aka " << hero.GetSecret();
         std::cout << "). I am " << hero.GetAge() << " years old!!\n";
     }
+
+    std::string dcFileName = "DC.csv";
+    fullPath = dirPath + dcFileName;
+    std::ofstream dcFile(fullPath);
+    if (dcFile.is_open())
+    {
+        for (auto& hero : DC)
+        {
+            hero.Serialize(dcFile, '^');
+            dcFile << "\n";
+        }
+    }
+    dcFile.close();
+
+    std::cout << "____DC____\n";
+    for (auto& hero : DC)
+    {
+        hero.Serialize(std::cout, '\t');
+        std::cout << "\n";
+    }
 }
