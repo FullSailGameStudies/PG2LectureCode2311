@@ -6,6 +6,7 @@
 #include <string>
 #include <sstream>
 #include <vector>
+#include "Hero.h"
 
 
 
@@ -55,7 +56,7 @@ int main()
 
     char delimiter = '%';
     std::ofstream outFile(fullPath);//1) open the file
-    if (outFile.is_open())
+    if (outFile.is_open())//check that the file is open before proceeding
     {
         //2) write to the file
         outFile << "Batman!!" << delimiter << 5 <<
@@ -80,6 +81,18 @@ int main()
 
         Lecture code: using the filePath variable, open an input file, use getline to read a line, print the line
     */
+    std::ifstream inFile(fullPath);
+
+    std::string inLine;
+    if (inFile.is_open())
+    {
+        std::getline(inFile, inLine);//assume \n
+        std::cout << "\nReading from CSV...\n" << inLine << "\n";
+    }
+    else
+        std::cout << "The file could not be opened.\n";
+
+    inFile.close();
 
 
     /*
@@ -97,6 +110,12 @@ int main()
         
 
     */
+    std::stringstream inStream(inLine);
+    std::string data;
+    while (std::getline(inStream, data, delimiter))
+    {
+        std::cout << data << "\n";
+    }
 
 
 
@@ -119,4 +138,24 @@ int main()
     std::string multi = "Batman^Bruce Wayne^35#Superman^Clark Kent^25#Wonder Woman^Diana Prince^25#Aquaman^Arthur Curry^12";
     char collectionSeparator = '#';
     char objectSeparator = '^';
+    std::string heroString;
+    std::stringstream multiStream(multi);
+    std::vector<Hero> DC;
+    while (std::getline(multiStream, heroString, collectionSeparator))
+    {
+        std::stringstream heroStream(heroString);
+        std::string name, secret, ageString;
+        std::getline(heroStream, name, objectSeparator);
+        std::getline(heroStream, secret, objectSeparator);
+        std::getline(heroStream, ageString, objectSeparator);
+        Hero myHero(name, secret, std::stoi(ageString));
+        DC.push_back(myHero);
+    }
+
+    std::cout << "\n\n*^*^*^ DC Universe *^*^*^\n";
+    for (auto& hero : DC)
+    {
+        std::cout << "Hello citizen! I am " << hero.GetName() << " (aka " << hero.GetSecret();
+        std::cout << "). I am " << hero.GetAge() << " years old!!\n";
+    }
 }
