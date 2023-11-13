@@ -49,6 +49,24 @@ int main()
         Lecture code: set a filePath variable, open an output file, write some csv data to it
     */
 
+    std::string dirPath = "C:\\temp\\2311\\";
+    std::string fileName = "2311.csv";
+    std::string fullPath = dirPath + fileName;
+
+    char delimiter = '%';
+    std::ofstream outFile(fullPath);//1) open the file
+    if (outFile.is_open())
+    {
+        //2) write to the file
+        outFile << "Batman!!" << delimiter << 5 <<
+            delimiter << true << delimiter << "NOT Aquaman";
+        outFile << delimiter << 23 << delimiter << 420.1;
+    }
+    else
+        std::cout << "That file or path does not exists.\n";
+
+    outFile.close();//3) close the file
+
 
     /*
 
