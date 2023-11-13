@@ -5,6 +5,7 @@ class Hero
 {
 public:
 	Hero(std::string name, std::string secret, int age);
+	Hero(std::string data, char delim);
 
 	std::string GetName() const { return name_; }
 	void SetName(std::string name) { name_ = name; }
@@ -16,6 +17,7 @@ public:
 	void SetAge(int age) { age_ = age; }
 
 	void Serialize(std::ostream& outputFile, char delimiter);
+	void Deserialize(std::string data, char delimiter);
 
 private:
 	std::string name_, secret_;

@@ -23,6 +23,16 @@
 
 
 */
+
+void PrintHeroes(std::vector<Hero>& myHeroes)
+{
+    std::cout << "____DC____\n";
+    for (auto& hero : myHeroes)
+    {
+        hero.Serialize(std::cout, '\t');
+        std::cout << "\n";
+    }
+}
 int main()
 {
     std::cout << "Hello PG2!\n";
@@ -172,10 +182,21 @@ int main()
     }
     dcFile.close();
 
-    std::cout << "____DC____\n";
-    for (auto& hero : DC)
+    PrintHeroes(DC);
+
+
+    std::ifstream dcInFile(fullPath);
+    std::vector<Hero> newDC;
+    if (dcInFile.is_open())
     {
-        hero.Serialize(std::cout, '\t');
-        std::cout << "\n";
+        std::string heroString;
+        while (std::getline(dcInFile, heroString))
+        {
+            Hero myHero(heroString, objectSeparator);
+            newDC.push_back(myHero);
+        }
     }
+    dcInFile.close();
+
+    PrintHeroes(newDC);
 }
